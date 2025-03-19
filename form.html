@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Login & Registration</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 400px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2 {
+            text-align: center;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        label {
+            margin: 10px 0 5px;
+        }
+        input[type="text"], input[type="password"], input[type="email"] {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        input[type="submit"] {
+            margin-top: 20px;
+            padding: 10px;
+            border: none;
+            background-color: #4d84e3;
+            color: #fff;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #86b5be;
+        }
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        .nav-links a {
+            margin: 0 10px;
+            text-decoration: none;
+            color: #74c8df;
+        }
+        .nav-links a:hover {
+            text-decoration: underline;
+        }
+        .form-section {
+            display: none;
+        }
+        .form-section.active {
+            display: block;
+        }
+        #login-link{
+            text-align: center;
+            margin-top: 20px;
+        }
+        #register-link{
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        
+        <!-- Registration Form -->
+        <div class="form-section" id="register-section">
+            <h1>Employee Registration</h1>
+            <form action="/register" method="POST">
+                <label for="reg-name">Name</label>
+                <input type="text" id="reg-name" name="name" required>
+
+                <label for="reg-email">Email</label>
+                <input type="email" id="reg-email" name="email" required>
+
+                <label for="reg-password">Password</label>
+                <input type="password" id="reg-password" name="password" required>
+
+                <input type="submit" value="Register">
+                
+                <a href="#" id="login-link">Login</a>
+            </form>
+        </div>
+        
+        <!-- Login Form -->
+        <div class="form-section" id="login-section">
+            <h1>Employee Login </h1>
+            <form action="/login" method="POST">
+                <label for="login-email">Email</label>
+                <input type="email" id="login-email" name="email" required>
+
+                <label for="login-password">Password</label>
+                <input type="password" id="login-password" name="password" required>
+
+                <input type="submit" value="Login">
+                <a href="#" id="register-link">Register</a>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const loginLink = document.getElementById('login-link');
+            const registerLink = document.getElementById('register-link');
+            const loginSection = document.getElementById('login-section');
+            const registerSection = document.getElementById('register-section');
+
+            loginLink.addEventListener('click', function(event) {
+                event.preventDefault();
+                loginSection.classList.add('active');
+                registerSection.classList.remove('active');
+            });
+
+            registerLink.addEventListener('click', function(event) {
+                event.preventDefault();
+                registerSection.classList.add('active');
+                loginSection.classList.remove('active');
+            });
+
+            loginSection.classList.add('active');
+        });
+    </script>
+</body>
+</html>
